@@ -12,7 +12,7 @@ describe("MyPromise", () => {
     expect(string).toBe("foo")
   })
 
-  it("resolution handler is called when promise is resolved", function() {
+  it("resolution handler is called when promise is resolved", function(done) {
     let promise = new MyPromise(function(resolve) {
       setTimeout(function() {
         resolve()
@@ -25,7 +25,9 @@ describe("MyPromise", () => {
 
     setTimeout(function() {
       expect(callBack).toBeCalled()
-    }, 100)
+    }, 10)
+
+    done()
   })
 
   xit("promise supports many resolution handlers", function(t) {
