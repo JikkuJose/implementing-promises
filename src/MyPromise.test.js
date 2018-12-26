@@ -25,9 +25,8 @@ describe("MyPromise", () => {
 
     setTimeout(function() {
       expect(callBack).toBeCalled()
-    }, 10)
-
-    done()
+      done()
+    }, 2000)
   })
 
   xit("promise supports many resolution handlers", function(t) {

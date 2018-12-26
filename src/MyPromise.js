@@ -4,11 +4,9 @@ class MyPromise {
     executor(this._resolve.bind(this))
   }
 
-  _resolve(value) {
-    while (this.resolutionQueue.length > 0) {
-      let handler = this.resolutionQueue.shift()
-      handler(value)
-    }
+  _resolve() {
+    this.resolutionQueue.forEach(r => r())
+    this.resolutionQueue = []
   }
 
   then(resolutionHandler) {
