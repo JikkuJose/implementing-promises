@@ -12,9 +12,7 @@ class MyPromise {
   }
 
   then(resolutionHandler) {
-    console.log(resolutionHandler)
     this.resolutionQueue.push(resolutionHandler)
-    console.log(this.resolutionQueue)
   }
 }
 

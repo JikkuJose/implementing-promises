@@ -12,18 +12,20 @@ describe("MyPromise", () => {
     expect(string).toBe("foo")
   })
 
-  it("resolution handler is called when promise is resolved", function(t) {
-    let testString = "foo"
-
+  it("resolution handler is called when promise is resolved", function() {
     let promise = new MyPromise(function(resolve) {
       setTimeout(function() {
-        resolve(testString)
+        resolve()
       }, 1000)
     })
 
-    promise.then(function(string) {
-      expect(string).toBe(testString)
-    })
+    const callBack = jest.fn().mockName("Unicorn")
+
+    promise.then(callBack)
+
+    setTimeout(function() {
+      expect(callBack).toBeCalled()
+    }, 100)
   })
 
   xit("promise supports many resolution handlers", function(t) {
